@@ -1,55 +1,83 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-export default function Hero() {
+interface HeroProps {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  backgroundImage?: string;
+}
+
+export default function Hero({
+  title = "Enjoy low to zero fees on your transfers.",
+  ctaText = "Go move money",
+  ctaLink = "/move-money",
+  backgroundImage = "/assets/hero.jpg",
+}: HeroProps) {
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-between bg-linear-to-b from-[#0b4dd4] to-[#1a6eff] text-white overflow-hidden px-6 md:px-16 py-20 rounded-3xl shadow-lg">
-      {/* Left Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="z-10 max-w-xl space-y-5"
-      >
-        <span className="inline-block bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">
-          New
-        </span>
-
-        <h1 className="text-5xl md:text-6xl font-bold">
-          Ima<span className="text-[#00e0ff]">G</span>nation
-        </h1>
-
-        <p className="text-lg text-white/90 leading-relaxed">
-          Unleash your innovative minds and make <br />
-          <span className="font-semibold">#FinanceForAll</span> a reality
-        </p>
-
-        <button className="inline-flex items-center gap-2 bg-white text-[#0b4dd4] font-semibold px-6 py-3 rounded-full shadow-md hover:bg-blue-50 transition">
-          ImaGnation <ArrowRight size={18} />
-        </button>
-      </motion.div>
-
-      {/* Right Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative mt-10 md:mt-0 md:w-1/2 flex justify-center"
-      >
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/mockup.png" // replace with your actual image
-          alt="Mockup 4 illustration"
-          width={800}
-          height={800}
-          className="object-contain drop-shadow-lg"
+          src={backgroundImage}
+          alt="Hero background"
+          fill
+          priority
+          className="object-cover"
+          quality={90}
         />
-      </motion.div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20" />
+      </div>
 
-      {/* Decorative shapes or lines */}
-      <div className="absolute inset-0 opacity-20 bg-[url('/images/line-pattern.svg')] bg-cover bg-center" />
+      {/* Content */}
+      <div className="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl text-center">
+          {/* Main Heading */}
+          <h1 className="mb-8 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            {title}
+          </h1>
+
+          {/* CTA Button */}
+          <Link
+            href={ctaLink}
+            className="inline-flex items-center gap-2 rounded-full bg-blue-700 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-blue-500 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-400/50"
+          >
+            {ctaText}
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Phone Mockups (Optional - can be added as additional prop) */}
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        {/* Left Phone */}
+        <div className="absolute left-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
+          <div className="relative h-[500px] w-[240px]">
+            {/* Add your phone mockup image here */}
+          </div>
+        </div>
+
+        {/* Right Phone */}
+        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
+          <div className="relative h-[500px] w-[240px]">
+            {/* Add your phone mockup image here */}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
