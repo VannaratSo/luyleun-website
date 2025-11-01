@@ -13,37 +13,37 @@ interface Stat {
 const stats: Stat[] = [
   {
     id: 1,
-    image: "/images/stat1.jpg",
+    image: "/assets/bVila.png",
     number: "94M",
     text: "Filipinos have used GCash",
   },
   {
     id: 2,
-    image: "/images/stat2.jpg",
+    image: "/assets/Bomnin glass.png",
     number: "Over 9M Filipinos",
     text: "with savings via GSave",
   },
   {
     id: 3,
-    image: "/images/stat3.jpg",
+    image: "/assets/DLT.png",
     number: "6M merchants",
     text: "and social sellers on the app",
   },
   {
     id: 4,
-    image: "/images/stat4.jpg",
+    image: "/assets/DLT1.png",
     number: "200+",
     text: "Countries with Filipino GCash Users",
   },
   {
     id: 5,
-    image: "/images/stat5.jpg",
+    image: "/assets/LL glass.png",
     number: "3M+",
     text: "Actual trees planted",
   },
   {
     id: 6,
-    image: "/images/stat6.jpg",
+    image: "/assets/luyleun2.png",
     number: "Over 3M borrowers",
     text: "through GLoan, GSave, and GCredit",
   },

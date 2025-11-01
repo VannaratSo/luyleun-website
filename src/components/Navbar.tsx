@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-3 xl:px-12 pt-4">
-      <div className="bg-[#f5f5f5] rounded-full px-4">
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 shadow-lg">
         <div className="flex items-center justify-between min-h-[72px]">
           {/* Logo */}
           <Link href="/" className="flex items-center h-10 px-2">
@@ -69,7 +69,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden p-2 text-gray-900 hover:text-gray-600"
+            className="xl:hidden p-2 text-white hover:text-white/80"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
@@ -107,7 +107,7 @@ export default function Navbar() {
                   {link.dropdown ? (
                     <div className="relative">
                       <button
-                        className="px-3 py-2 text-[15px] text-gray-900 hover:text-gray-600 transition-colors flex items-center gap-1.5"
+                        className="px-3 py-2 text-[15px] text-white hover:text-white/80 transition-colors flex items-center gap-1.5"
                         onMouseEnter={() => setOpenDropdown(link.label)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
@@ -139,12 +139,12 @@ export default function Navbar() {
                         onMouseEnter={() => setOpenDropdown(link.label)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
-                        <ul className="bg-white rounded-lg shadow-lg py-1 min-w-160px border-0">
+                        <ul className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-xl py-1 min-w-160px">
                           {link.dropdown.map((item) => (
                             <li key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block px-4 py-2 text-[15px] text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                                className="block px-4 py-2 text-[15px] text-white hover:text-white/80 hover:bg-white/10 transition-colors"
                               >
                                 {item.label}
                               </Link>
@@ -156,7 +156,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="px-3 py-2 text-[15px] text-gray-900 hover:text-gray-600 transition-colors flex items-center"
+                      className="px-3 py-2 text-[15px] text-white hover:text-white/80 transition-colors flex items-center"
                     >
                       {link.label}
                     </Link>
@@ -170,7 +170,7 @@ export default function Navbar() {
               {/* Search */}
               <Link
                 href="/search"
-                className="flex items-center gap-3 text-[15px] text-gray-900 hover:text-gray-600 transition-colors px-3 border-r border-gray-300"
+                className="flex items-center gap-3 text-[15px] text-white hover:text-white/80 transition-colors px-3 border-r border-white/30"
               >
                 <span>Search</span>
                 <svg
@@ -190,7 +190,7 @@ export default function Navbar() {
 
               {/* Download Button */}
               <button
-                className="bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full hover:bg-blue-500 transition-all text-[15px] whitespace-nowrap hover:shadow-md"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-6 py-2.5 rounded-full transition-all text-[15px] whitespace-nowrap hover:shadow-lg shadow-cyan-400/25"
                 onClick={() => {
                   /* Handle modal open */
                 }}
@@ -203,14 +203,14 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="xl:hidden pb-4 border-t border-gray-300 mt-2 pt-4">
+          <div className="xl:hidden pb-4 border-t border-white/30 mt-2 pt-4">
             <ul className="space-y-1">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   {link.dropdown ? (
                     <div>
                       <button
-                        className="w-full px-4 py-2.5 text-left text-[15px] text-gray-900 hover:bg-gray-200 rounded-lg flex items-center justify-between"
+                        className="w-full px-4 py-2.5 text-left text-[15px] text-white hover:bg-white/10 rounded-lg flex items-center justify-between"
                         onClick={() =>
                           setOpenDropdown(
                             openDropdown === link.label ? null : link.label
@@ -241,7 +241,7 @@ export default function Navbar() {
                             <li key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block px-4 py-2 text-[15px] text-gray-600 hover:bg-gray-200 rounded-lg"
+                                className="block px-4 py-2 text-[15px] text-white/80 hover:bg-white/10 rounded-lg"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 {item.label}
@@ -254,7 +254,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="block px-4 py-2.5 text-[15px] text-gray-900 hover:bg-gray-200 rounded-lg"
+                      className="block px-4 py-2.5 text-[15px] text-white hover:bg-white/10 rounded-lg"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -265,10 +265,10 @@ export default function Navbar() {
             </ul>
 
             {/* Mobile Actions */}
-            <div className="mt-4 space-y-2 px-4 border-t border-gray-300 pt-4">
+            <div className="mt-4 space-y-2 px-4 border-t border-white/30 pt-4">
               <Link
                 href="/search"
-                className="flex items-center gap-2 text-[15px] text-gray-900 hover:bg-gray-200 rounded-lg py-2.5 px-4"
+                className="flex items-center gap-2 text-[15px] text-white hover:bg-white/10 rounded-lg py-2.5 px-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span>Search</span>
@@ -287,7 +287,7 @@ export default function Navbar() {
                 </svg>
               </Link>
               <button
-                className="w-full bg-blue-700 text-white font-bold px-6 py-3 rounded-full hover:bg-blue-500 transition-all text-[15px]"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-6 py-3 rounded-full transition-all text-[15px] shadow-lg"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   /* Handle modal open */

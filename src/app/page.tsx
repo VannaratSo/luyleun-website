@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import LoanStep from "@/components/LoanStep";
 import Navbar from "@/components/Navbar";
 import Promos from "@/components/Promos";
 import SendMoney from "@/components/SendMoney";
@@ -10,7 +11,8 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <SendMoney />
+
+      <LoanStep />
       <Promos />
       <ShowReel />
       <StrengthInNumbers />

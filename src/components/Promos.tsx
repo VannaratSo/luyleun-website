@@ -16,7 +16,7 @@ interface Promo {
 const promos: Promo[] = [
   {
     id: 1,
-    image: "/images/promo1.jpg",
+    image: "/assets/mockup.png",
     title: "GCrypto Big Trades, Big Rebates Promo",
     description:
       "Get PHP 1,500 every time you trade a total of PHP 100,000 on GCrypto!",
@@ -25,7 +25,7 @@ const promos: Promo[] = [
   },
   {
     id: 2,
-    image: "/images/promo2.jpg",
+    image: "/assets/mockup2.png",
     title: "GSave E-raffle: Ipon to a Million",
     description: "Mag-ipon na sa GSave for a chance to win up to ₱1,000,000!",
     tags: ["GSave"],
@@ -33,7 +33,7 @@ const promos: Promo[] = [
   },
   {
     id: 3,
-    image: "/images/promo3.jpg",
+    image: "/assets/mockup3.png",
     title: "Get PHP 100 cashback on your bills payment using GCredit",
     description:
       "Settle your bills with GCredit and get PHP 100 cashback minimum spend!",

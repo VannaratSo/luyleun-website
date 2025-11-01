@@ -10,7 +10,7 @@ export default function AboutUs() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex flex-col justify-center items-center text-center px-6">
         <Image
-          src="/images/people-walking.jpg"
+          src="/assets/AngkorWat2.jpg"
           alt="People walking in city"
           fill
           className="object-cover opacity-50"
@@ -36,7 +36,7 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
           >
             <Image
-              src="/images/gcash-phone.png"
+              src="/assets/handiphone.png"
               alt="GCash app"
               width={280}
               height={560}
@@ -60,7 +60,7 @@ export default function AboutUs() {
             </p>
           </div>
           <Image
-            src="/images/old-phone.png"
+            src="/assets/iPhone 15 Pro.png"
             alt="Old mobile phone"
             width={200}
             height={400}
