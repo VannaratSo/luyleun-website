@@ -17,7 +17,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
   backgroundImage = "/assets/Background.png",
 }) => {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-[#000B2D]">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
       {/* Main Content Grid Layout */}
       <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Left Side - Mockup Image */}
@@ -40,15 +40,15 @@ const AboutUs: React.FC<AboutUsProps> = ({
         {/* Right Side - Content */}
         <div className="flex flex-col justify-center space-y-6 text-left order-1 lg:order-2">
           {/* Badge */}
-          <div className="inline-flex items-center w-fit gap-2 border border-white/20 rounded-full px-4 py-2">
+          <div className="inline-flex items-center w-fit gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-white text-sm font-medium">
+            <span className="text-gray-800 dark:text-white text-sm font-medium">
               Trusted • Innovative • Customer-First
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
             <span className="block">
               {title.split(" ").slice(0, 2).join(" ")}
             </span>
@@ -61,15 +61,15 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-lg">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-200 leading-relaxed max-w-lg">
             {subtitle}
           </p>
 
           {/* Features */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-green-400"
+                className="w-4 h-4 text-green-600 dark:text-green-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -79,11 +79,11 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">10+ Years</span>
+              <span className="text-gray-800 dark:text-white text-sm">10+ Years</span>
             </div>
-            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-blue-400"
+                className="w-4 h-4 text-blue-600 dark:text-blue-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -93,11 +93,11 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">50K+ Customers</span>
+              <span className="text-gray-800 dark:text-white text-sm">50K+ Customers</span>
             </div>
-            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-purple-400"
+                className="w-4 h-4 text-purple-600 dark:text-purple-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -107,7 +107,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">24/7 Support</span>
+              <span className="text-gray-800 dark:text-white text-sm">24/7 Support</span>
             </div>
           </div>
 
@@ -133,7 +133,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
               </svg>
             </Link>
 
-            <button className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
+            <button className="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/40 text-gray-800 dark:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"

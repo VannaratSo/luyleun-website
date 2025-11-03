@@ -17,7 +17,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
   backgroundImage = "/assets/Background.png",
 }) => {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -36,15 +36,15 @@ const LoanStep: React.FC<LoanStepProps> = ({
         {/* Left Side - Content */}
         <div className="flex flex-col justify-center space-y-6 text-left">
           {/* Badge */}
-          <div className="inline-flex items-center w-fit gap-2 border border-white/20 rounded-full px-4 py-2">
+          <div className="inline-flex items-center w-fit gap-2 border border-white/20 dark:border-gray-600/30 rounded-full px-4 py-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-white text-sm font-medium">
+            <span className="text-white dark:text-gray-200 text-sm font-medium">
               Fast Approval • Low Interest
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white dark:text-gray-100">
             <span className="block">
               {title.split(" ").slice(0, 2).join(" ")}
             </span>
@@ -57,13 +57,13 @@ const LoanStep: React.FC<LoanStepProps> = ({
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-lg">
+          <p className="text-lg md:text-xl text-gray-200 dark:text-gray-300 leading-relaxed max-w-lg">
             {subtitle}
           </p>
 
           {/* Features */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 border border-white/20 dark:border-gray-600/20 rounded-full px-4 py-2">
               <svg
                 className="w-4 h-4 text-green-400"
                 fill="currentColor"
@@ -75,9 +75,11 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">5 Min Approval</span>
+              <span className="text-white dark:text-gray-200 text-sm">
+                5 Min Approval
+              </span>
             </div>
-            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 border border-white/20 dark:border-gray-600/20 rounded-full px-4 py-2">
               <svg
                 className="w-4 h-4 text-blue-400"
                 fill="currentColor"
@@ -89,7 +91,9 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">Up to 50K</span>
+              <span className="text-white dark:text-gray-200 text-sm">
+                Up to 50K
+              </span>
             </div>
           </div>
 
@@ -115,7 +119,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
               </svg>
             </Link>
 
-            <button className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
+            <button className="inline-flex items-center justify-center gap-2 border border-white/20 dark:border-gray-600/30 hover:border-white/40 dark:hover:border-gray-500/50 text-white dark:text-gray-200 font-semibold px-8 py-4 rounded-full transition-all duration-300">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"

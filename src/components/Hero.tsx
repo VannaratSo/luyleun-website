@@ -19,7 +19,7 @@ export default function Hero({
   backgroundImage = "/assets/hero.jpg",
 }: HeroProps) {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
       {/* Threads Background - Full Screen */}
       <div className="absolute inset-0 w-full h-full">
         <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
@@ -29,15 +29,15 @@ export default function Hero({
       <div className="absolute inset-0 z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/10 backdrop-blur-md border border-black/20 dark:border-white/20 rounded-full px-4 py-2 mb-6">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-white text-sm font-medium">
+            <span className="text-black dark:text-white text-sm font-medium">
               Fast Approval • Low Interest • LUYLEUN
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mb-6 text-4xl font-bold leading-tight text-black dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Get Your
             <span className="block">
               <ShinyText
@@ -53,7 +53,7 @@ export default function Hero({
           </h1>
 
           {/* Subtitle */}
-          <p className="mb-8 text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto">
+          <p className="mb-8 text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
             Experience Cambodia's first fully digital lending platform. Get
             approved in minutes, receive funds instantly, and enjoy flexible
             repayment terms designed for your lifestyle.
@@ -61,9 +61,9 @@ export default function Hero({
 
           {/* Features */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-green-400"
+                className="w-4 h-4 text-green-600 dark:text-green-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -73,11 +73,11 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">5 Min Approval</span>
+              <span className="text-black dark:text-white text-sm">5 Min Approval</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-blue-400"
+                className="w-4 h-4 text-blue-600 dark:text-blue-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -87,11 +87,11 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">Up to $50,000</span>
+              <span className="text-black dark:text-white text-sm">Up to $50,000</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
-                className="w-4 h-4 text-purple-400"
+                className="w-4 h-4 text-purple-600 dark:text-purple-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -101,7 +101,7 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">Secure & Licensed</span>
+              <span className="text-black dark:text-white text-sm">Secure & Licensed</span>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default function Hero({
             {/* Primary Button */}
             <Link
               href={ctaLink}
-              className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
+              className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
             >
               Apply for Loan Now
               <svg
@@ -129,7 +129,7 @@ export default function Hero({
             </Link>
 
             {/* Secondary Button */}
-            <button className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
+            <button className="inline-flex items-center justify-center gap-2 bg-gray-100 dark:bg-white/10 backdrop-blur-sm border border-gray-300 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-black dark:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"

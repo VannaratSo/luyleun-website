@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ModeToggle } from "./mode-toggle";
 
 interface DropdownItem {
   label: string;
@@ -68,7 +69,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-black/10"
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-black/10 dark:border-white/10"
           : "bg-transparent"
       }`}
     >
@@ -91,7 +92,7 @@ export default function Navbar() {
           <button
             className={`lg:hidden p-2 rounded-lg transition-all duration-300 hover:scale-110 group ${
               isScrolled
-                ? "text-black hover:text-blue-600"
+                ? "text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                 : "text-white hover:text-cyan-300"
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -137,7 +138,7 @@ export default function Navbar() {
                       <button
                         className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
                           isScrolled
-                            ? "text-black hover:text-blue-600"
+                            ? "text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                             : "text-white hover:text-cyan-300"
                         }`}
                         onMouseEnter={() => setOpenDropdown(link.label)}
@@ -147,7 +148,9 @@ export default function Navbar() {
                         {/* Animated underline */}
                         <div
                           className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
-                            isScrolled ? "bg-blue-600" : "bg-cyan-300"
+                            isScrolled
+                              ? "bg-blue-600 dark:bg-blue-400"
+                              : "bg-cyan-300"
                           }`}
                         ></div>
                       </button>
@@ -162,12 +165,12 @@ export default function Navbar() {
                         onMouseEnter={() => setOpenDropdown(link.label)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
-                        <ul className="bg-white rounded-xl shadow-2xl py-3 min-w-48 border border-black/5 backdrop-blur-lg">
+                        <ul className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl py-3 min-w-48 border border-black/5 dark:border-white/10 backdrop-blur-lg">
                           {link.dropdown.map((item) => (
                             <li key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block px-5 py-3 text-sm text-black hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 hover:translate-x-1 relative overflow-hidden group"
+                                className="block px-5 py-3 text-sm text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-200 hover:translate-x-1 relative overflow-hidden group"
                               >
                                 <span className="relative z-10">
                                   {item.label}
@@ -184,7 +187,7 @@ export default function Navbar() {
                       href={link.href}
                       className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
                         isScrolled
-                          ? "text-black hover:text-blue-600"
+                          ? "text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                           : "text-white hover:text-cyan-300"
                       }`}
                     >
@@ -192,7 +195,9 @@ export default function Navbar() {
                       {/* Animated underline */}
                       <div
                         className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
-                          isScrolled ? "bg-blue-600" : "bg-cyan-300"
+                          isScrolled
+                            ? "bg-blue-600 dark:bg-blue-400"
+                            : "bg-cyan-300"
                         }`}
                       ></div>
                     </Link>
@@ -202,13 +207,14 @@ export default function Navbar() {
             </ul>
           </div>
 
-          {/* Right Side - CTA Button */}
-          <div className="hidden lg:flex">
+          {/* Right Side - Theme Toggle & CTA Button */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <ModeToggle />
             <button
               className={`relative px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group overflow-hidden ${
                 isScrolled
-                  ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-500/25"
-                  : "bg-white text-black hover:bg-white/90 hover:shadow-white/25"
+                  ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-500/25 dark:bg-blue-500 dark:hover:bg-blue-600"
+                  : "bg-white text-black hover:bg-white/90 hover:shadow-white/25 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
               }`}
               onClick={() => {
                 /* Handle modal open */
@@ -218,13 +224,17 @@ export default function Navbar() {
               {/* Background overlay */}
               <div
                 className={`absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full ${
-                  isScrolled ? "bg-blue-500" : "bg-gray-100"
+                  isScrolled
+                    ? "bg-blue-500 dark:bg-blue-400"
+                    : "bg-gray-100 dark:bg-gray-700"
                 }`}
               ></div>
               {/* Pulse ring effect */}
               <div
                 className={`absolute inset-0 rounded-full animate-ping group-hover:animate-pulse opacity-20 ${
-                  isScrolled ? "bg-blue-400" : "bg-gray-400"
+                  isScrolled
+                    ? "bg-blue-400 dark:bg-blue-300"
+                    : "bg-gray-400 dark:bg-gray-500"
                 }`}
               ></div>
             </button>
@@ -236,8 +246,8 @@ export default function Navbar() {
           <div
             className={`xl:hidden pb-4 border-t mt-2 pt-4 transition-all duration-300 ${
               isScrolled
-                ? "border-white/40 bg-black/20 backdrop-blur-xl rounded-b-2xl"
-                : "border-white/30"
+                ? "border-white/40 dark:border-gray-600/40 bg-black/20 dark:bg-gray-900/20 backdrop-blur-xl rounded-b-2xl"
+                : "border-white/30 dark:border-gray-600/30"
             }`}
           >
             <ul className="space-y-1">
@@ -246,7 +256,7 @@ export default function Navbar() {
                   {link.dropdown ? (
                     <div>
                       <button
-                        className="w-full px-4 py-2.5 text-left text-[15px] text-white hover:bg-white/10 rounded-lg flex items-center justify-between"
+                        className="w-full px-4 py-2.5 text-left text-[15px] text-white dark:text-gray-200 hover:bg-white/10 dark:hover:bg-gray-700/50 rounded-lg flex items-center justify-between"
                         onClick={() =>
                           setOpenDropdown(
                             openDropdown === link.label ? null : link.label
@@ -277,7 +287,7 @@ export default function Navbar() {
                             <li key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block px-4 py-2 text-[15px] text-white/80 hover:bg-white/10 rounded-lg"
+                                className="block px-4 py-2 text-[15px] text-white/80 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-gray-700/50 rounded-lg"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 {item.label}
@@ -290,7 +300,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="block px-4 py-2.5 text-[15px] text-white hover:bg-white/10 rounded-lg"
+                      className="block px-4 py-2.5 text-[15px] text-white dark:text-gray-200 hover:bg-white/10 dark:hover:bg-gray-700/50 rounded-lg"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -301,29 +311,32 @@ export default function Navbar() {
             </ul>
 
             {/* Mobile Actions */}
-            <div className="mt-4 space-y-2 px-4 border-t border-white/30 pt-4">
-              <Link
-                href="/search"
-                className="flex items-center gap-2 text-[15px] text-white hover:bg-white/10 rounded-lg py-2.5 px-4"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span>Search</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <div className="mt-4 space-y-2 px-4 border-t border-white/30 dark:border-gray-600/30 pt-4">
+              <div className="flex items-center justify-between">
+                <Link
+                  href="/search"
+                  className="flex items-center gap-2 text-[15px] text-white dark:text-gray-200 hover:bg-white/10 dark:hover:bg-gray-700/50 rounded-lg py-2.5 px-4"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </Link>
+                  <span>Search</span>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </Link>
+                <ModeToggle />
+              </div>
               <button
-                className="w-full bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition-all text-sm shadow-lg"
+                className="w-full bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all text-sm shadow-lg"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   /* Handle modal open */

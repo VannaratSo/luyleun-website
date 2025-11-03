@@ -28,7 +28,7 @@ export default function AboutUs() {
       </section>
 
       {/* Story Section */}
-      <section className="relative bg-gradient-to-b from-[#00144F] to-[#000B2D] py-24 px-6 md:px-16">
+      <section className="relative bg-linear-to-b from-[#00144F] to-[#000B2D] py-24 px-6 md:px-16">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

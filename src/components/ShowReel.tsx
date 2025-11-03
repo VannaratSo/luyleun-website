@@ -6,10 +6,7 @@ import { Play } from "lucide-react";
 
 export default function ShowReel() {
   return (
-    <section className="bg-black text-white py-20 px-4 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
-
+    <section className="bg-white dark:bg-black text-black dark:text-white py-20 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
@@ -18,13 +15,15 @@ export default function ShowReel() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-blue-400 text-sm font-medium">SHOWCASE</span>
+          <div className="inline-block bg-blue-100 dark:bg-blue-600/20 border border-blue-300 dark:border-blue-500/30 rounded-full px-4 py-2 mb-6">
+            <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+              SHOWCASE
+            </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-linear-to-r from-gray-900 via-blue-600 to-blue-800 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent">
             Our ShowReel
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Discover the innovation behind our digital solutions. Watch how
             we're revolutionizing the financial landscape and creating seamless
             experiences for millions.
@@ -36,14 +35,14 @@ export default function ShowReel() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] bg-gradient-to-br from-zinc-900 to-black border border-zinc-800"
+          className="relative rounded-3xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] bg-linear-to-br from-zinc-900 to-black dark:from-gray-800 dark:to-gray-900 border border-zinc-800 dark:border-gray-700"
         >
           <div className="aspect-video relative group">
             {/* Glowing border effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 blur-sm"></div>
+            <div className="absolute -inset-0.5 bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 blur-sm"></div>
 
             {/* Video element */}
-            <div className="relative bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden">
+            <div className="relative bg-linear-to-br from-zinc-900 to-black dark:from-gray-800 dark:to-gray-900 rounded-3xl overflow-hidden">
               {/* YouTube Embed */}
               <iframe
                 className="w-full h-full object-cover rounded-3xl"
@@ -70,26 +69,28 @@ export default function ShowReel() {
               */}
 
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
             </div>
           </div>
 
           {/* Video Info Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-8 bg-linear-to-t from-black/90 via-black/50 to-transparent">
             <div className="flex items-end justify-between">
               <div>
-                <h4 className="text-white font-bold text-xl mb-2">
+                <h4 className="text-white dark:text-gray-100 font-bold text-xl mb-2">
                   Digital Innovation Showcase 2024
                 </h4>
-                <p className="text-blue-200 text-sm max-w-md">
+                <p className="text-blue-200 dark:text-blue-300 text-sm max-w-md">
                   Experience the future of digital finance through our
                   cutting-edge solutions and user-centric design.
                 </p>
               </div>
               <div className="hidden md:block">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+                <div className="flex items-center gap-2 bg-white/10 dark:bg-gray-700/50 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20 dark:border-gray-600/30">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-white text-sm font-medium">LIVE</span>
+                  <span className="text-white dark:text-gray-100 text-sm font-medium">
+                    LIVE
+                  </span>
                 </div>
               </div>
             </div>
@@ -104,33 +105,41 @@ export default function ShowReel() {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
         >
           <div className="text-center group">
-            <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 group-hover:border-blue-500/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 mb-2">100+</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wide">
+            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
+              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
+                100+
+              </div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
                 Projects Completed
               </div>
             </div>
           </div>
           <div className="text-center group">
-            <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 group-hover:border-blue-500/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 mb-2">50M+</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wide">
+            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
+              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
+                50M+
+              </div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
                 Users Reached
               </div>
             </div>
           </div>
           <div className="text-center group">
-            <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 group-hover:border-blue-500/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 mb-2">25+</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wide">
+            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
+              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
+                25+
+              </div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
                 Countries Served
               </div>
             </div>
           </div>
           <div className="text-center group">
-            <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 group-hover:border-blue-500/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 mb-2">99%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wide">
+            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
+              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
+                99%
+              </div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
                 Client Satisfaction
               </div>
             </div>
