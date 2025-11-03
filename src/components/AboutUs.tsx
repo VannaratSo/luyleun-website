@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface LoanStepProps {
+interface AboutUsProps {
   title?: string;
   subtitle?: string;
   ctaText?: string;
@@ -9,37 +9,41 @@ interface LoanStepProps {
   backgroundImage?: string;
 }
 
-const LoanStep: React.FC<LoanStepProps> = ({
-  title = "Get your loan in 4 simple steps",
-  subtitle = "Fast approval in minutes. No paperwork hassle. Get up to ₱50,000 with flexible payment terms that work for you.",
-  ctaText = "Apply for Loan",
-  ctaLink = "/apply-loan",
+const AboutUs: React.FC<AboutUsProps> = ({
+  title = "About LUYLEUN Financial Services",
+  subtitle = "Empowering financial freedom through innovative digital lending solutions. We believe everyone deserves access to fair, transparent, and fast financial services.",
+  ctaText = "Learn More",
+  ctaLink = "/about",
   backgroundImage = "/assets/Background.png",
 }) => {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={backgroundImage}
-          alt="Loan background"
-          fill
-          priority
-          className="object-cover object-center sm:object-right md:object-center lg:object-right"
-          quality={90}
-        />
-        {/* Removed gradient overlay */}
-      </div>
-
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-[#000B2D]">
       {/* Main Content Grid Layout */}
       <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Left Side - Content */}
-        <div className="flex flex-col justify-center space-y-6 text-left">
+        {/* Left Side - Mockup Image */}
+        <div className="flex justify-center items-center order-2 lg:order-1">
+          <div className="relative">
+            <Image
+              src="/assets/mockup.png"
+              alt="LUYLEUN App Mockup"
+              width={1000}
+              height={600}
+              className="object-contain"
+              priority
+            />
+            {/* Optional: Add floating elements or animations */}
+            <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-400 rounded-full animate-pulse opacity-60"></div>
+            <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-blue-500 rounded-full animate-bounce opacity-40"></div>
+          </div>
+        </div>
+
+        {/* Right Side - Content */}
+        <div className="flex flex-col justify-center space-y-6 text-left order-1 lg:order-2">
           {/* Badge */}
           <div className="inline-flex items-center w-fit gap-2 border border-white/20 rounded-full px-4 py-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span className="text-white text-sm font-medium">
-              Fast Approval • Low Interest
+              Trusted • Innovative • Customer-First
             </span>
           </div>
 
@@ -75,7 +79,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">5 Min Approval</span>
+              <span className="text-white text-sm">10+ Years</span>
             </div>
             <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
               <svg
@@ -89,7 +93,21 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">Up to 50K</span>
+              <span className="text-white text-sm">50K+ Customers</span>
+            </div>
+            <div className="flex items-center gap-2 border border-white/20 rounded-full px-4 py-2">
+              <svg
+                className="w-4 h-4 text-purple-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="text-white text-sm">24/7 Support</span>
             </div>
           </div>
 
@@ -123,7 +141,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              Learn More
+              Our Story
             </button>
           </div>
         </div>
@@ -132,4 +150,4 @@ const LoanStep: React.FC<LoanStepProps> = ({
   );
 };
 
-export default LoanStep;
+export default AboutUs;

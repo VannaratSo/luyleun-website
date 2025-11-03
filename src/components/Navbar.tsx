@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -49,19 +49,39 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    // Add initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 px-3 xl:px-12 pt-4">
-      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 shadow-lg">
-        <div className="flex items-center justify-between min-h-[72px]">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/80 backdrop-blur-xl border-b border-black/10"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center h-10 px-2">
-            <div className="relative w-32 h-10">
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-28 h-8 transition-all duration-300 group-hover:scale-105">
               <Image
                 src="/assets/LL glass.png"
                 alt="GOtyme bank"
                 fill
-                className="object-contain"
+                className="object-contain transition-all duration-300 group-hover:brightness-110"
                 priority
               />
             </div>
@@ -69,14 +89,18 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden p-2 text-white hover:text-white/80"
+            className={`lg:hidden p-2 rounded-lg transition-all duration-300 hover:scale-110 group ${
+              isScrolled
+                ? "text-black hover:text-blue-600"
+                : "text-white hover:text-cyan-300"
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 transform rotate-180 transition-transform duration-300 group-hover:rotate-90"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,7 +113,11 @@ export default function Navbar() {
                 />
               </svg>
             ) : (
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                className="w-6 h-6 transform transition-transform duration-300 group-hover:scale-110"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path
                   fillRule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -100,33 +128,28 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center justify-between flex-1 ml-8">
-            <ul className="flex items-center space-x-1">
+          <div className="hidden lg:flex items-center justify-center flex-1 mx-8">
+            <ul className="flex items-center space-x-8">
               {navLinks.map((link) => (
-                <li key={link.label} className="relative group">
+                <li key={link.label} className="relative">
                   {link.dropdown ? (
-                    <div className="relative">
+                    <div className="relative group">
                       <button
-                        className="px-3 py-2 text-[15px] text-white hover:text-white/80 transition-colors flex items-center gap-1.5"
+                        className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
+                          isScrolled
+                            ? "text-black hover:text-blue-600"
+                            : "text-white hover:text-cyan-300"
+                        }`}
                         onMouseEnter={() => setOpenDropdown(link.label)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
-                        <span>{link.label}</span>
-                        <svg
-                          className={`w-3.5 h-3.5 transition-transform ${
-                            openDropdown === link.label ? "rotate-180" : ""
+                        <span className="relative z-10">{link.label}</span>
+                        {/* Animated underline */}
+                        <div
+                          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
+                            isScrolled ? "bg-blue-600" : "bg-cyan-300"
                           }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
+                        ></div>
                       </button>
 
                       {/* Dropdown Menu */}
@@ -139,14 +162,17 @@ export default function Navbar() {
                         onMouseEnter={() => setOpenDropdown(link.label)}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
-                        <ul className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-xl py-1 min-w-160px">
+                        <ul className="bg-white rounded-xl shadow-2xl py-3 min-w-48 border border-black/5 backdrop-blur-lg">
                           {link.dropdown.map((item) => (
                             <li key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block px-4 py-2 text-[15px] text-white hover:text-white/80 hover:bg-white/10 transition-colors"
+                                className="block px-5 py-3 text-sm text-black hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 hover:translate-x-1 relative overflow-hidden group"
                               >
-                                {item.label}
+                                <span className="relative z-10">
+                                  {item.label}
+                                </span>
+                                <div className="absolute inset-0 bg-linear-to-r from-blue-500/10 to-cyan-500/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                               </Link>
                             </li>
                           ))}
@@ -156,54 +182,64 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="px-3 py-2 text-[15px] text-white hover:text-white/80 transition-colors flex items-center"
+                      className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
+                        isScrolled
+                          ? "text-black hover:text-blue-600"
+                          : "text-white hover:text-cyan-300"
+                      }`}
                     >
-                      {link.label}
+                      <span className="relative z-10">{link.label}</span>
+                      {/* Animated underline */}
+                      <div
+                        className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
+                          isScrolled ? "bg-blue-600" : "bg-cyan-300"
+                        }`}
+                      ></div>
                     </Link>
                   )}
                 </li>
               ))}
             </ul>
+          </div>
 
-            {/* Right Side Actions */}
-            <div className="flex items-center gap-4 pr-2">
-              {/* Search */}
-              <Link
-                href="/search"
-                className="flex items-center gap-3 text-[15px] text-white hover:text-white/80 transition-colors px-3 border-r border-white/30"
-              >
-                <span>Search</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </Link>
-
-              {/* Download Button */}
-              <button
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-6 py-2.5 rounded-full transition-all text-[15px] whitespace-nowrap hover:shadow-lg shadow-cyan-400/25"
-                onClick={() => {
-                  /* Handle modal open */
-                }}
-              >
-                Download now
-              </button>
-            </div>
+          {/* Right Side - CTA Button */}
+          <div className="hidden lg:flex">
+            <button
+              className={`relative px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group overflow-hidden ${
+                isScrolled
+                  ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-500/25"
+                  : "bg-white text-black hover:bg-white/90 hover:shadow-white/25"
+              }`}
+              onClick={() => {
+                /* Handle modal open */
+              }}
+            >
+              <span className="relative z-10">Get Started</span>
+              {/* Background overlay */}
+              <div
+                className={`absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full ${
+                  isScrolled ? "bg-blue-500" : "bg-gray-100"
+                }`}
+              ></div>
+              {/* Pulse ring effect */}
+              <div
+                className={`absolute inset-0 rounded-full animate-ping group-hover:animate-pulse opacity-20 ${
+                  isScrolled ? "bg-blue-400" : "bg-gray-400"
+                }`}
+              ></div>
+            </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="xl:hidden pb-4 border-t border-white/30 mt-2 pt-4">
+          <div
+            className={`xl:hidden pb-4 border-t mt-2 pt-4 transition-all duration-300 ${
+              isScrolled
+                ? "border-white/40 bg-black/20 backdrop-blur-xl rounded-b-2xl"
+                : "border-white/30"
+            }`}
+          >
             <ul className="space-y-1">
               {navLinks.map((link) => (
                 <li key={link.label}>
@@ -287,13 +323,13 @@ export default function Navbar() {
                 </svg>
               </Link>
               <button
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-6 py-3 rounded-full transition-all text-[15px] shadow-lg"
+                className="w-full bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition-all text-sm shadow-lg"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   /* Handle modal open */
                 }}
               >
-                Download now
+                Get Started
               </button>
             </div>
           </div>
