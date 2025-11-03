@@ -79,7 +79,9 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-gray-800 dark:text-white text-sm">10+ Years</span>
+              <span className="text-gray-800 dark:text-white text-sm">
+                10+ Years
+              </span>
             </div>
             <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
@@ -93,7 +95,9 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-gray-800 dark:text-white text-sm">50K+ Customers</span>
+              <span className="text-gray-800 dark:text-white text-sm">
+                50K+ Customers
+              </span>
             </div>
             <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
@@ -107,7 +111,9 @@ const AboutUs: React.FC<AboutUsProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-gray-800 dark:text-white text-sm">24/7 Support</span>
+              <span className="text-gray-800 dark:text-white text-sm">
+                24/7 Support
+              </span>
             </div>
           </div>
 

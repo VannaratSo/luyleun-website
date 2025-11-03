@@ -73,7 +73,9 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-black dark:text-white text-sm">5 Min Approval</span>
+              <span className="text-black dark:text-white text-sm">
+                5 Min Approval
+              </span>
             </div>
             <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
@@ -87,7 +89,9 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-black dark:text-white text-sm">Up to $50,000</span>
+              <span className="text-black dark:text-white text-sm">
+                Up to $50,000
+              </span>
             </div>
             <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
@@ -101,7 +105,9 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-black dark:text-white text-sm">Secure & Licensed</span>
+              <span className="text-black dark:text-white text-sm">
+                Secure & Licensed
+              </span>
             </div>
           </div>
 
