@@ -48,7 +48,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
             <span className="block">
               {title.split(" ").slice(0, 2).join(" ")}
             </span>
-            <span className="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               {title.split(" ").slice(2, 4).join(" ")}
             </span>
             <span className="block text-4xl md:text-5xl lg:text-6xl">
@@ -89,7 +89,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-white text-sm">Up to ₱50K</span>
+              <span className="text-white text-sm">Up to 50K</span>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ const LoanStep: React.FC<LoanStepProps> = ({
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link
               href={ctaLink}
-              className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
+              className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
             >
               {ctaText}
               <svg
