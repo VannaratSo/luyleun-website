@@ -1,6 +1,6 @@
 import AboutUs from "@/components/AboutUs";
 import Hero from "@/components/Hero";
-import LoanStep from "@/components/LoanStep";
+import LoanSteps from "@/components/LoanSteps";
 import Navbar from "@/components/Navbar";
 import ShowReel from "@/components/ShowReel";
 
@@ -9,7 +9,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <LoanStep />
+      <LoanSteps />
       <AboutUs />
       <ShowReel />
     </main>

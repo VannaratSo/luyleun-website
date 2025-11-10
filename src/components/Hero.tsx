@@ -1,63 +1,209 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Threads from "./Threads";
+import { motion, AnimatePresence } from "framer-motion";
 import ShinyText from "./ShinyText";
+import Hyperspeed from "./Hyperspeed";
 
 interface HeroProps {
   title?: string;
   subtitle?: string;
   ctaText?: string;
   ctaLink?: string;
+  secondaryCtaText?: string;
   backgroundImage?: string;
+  showMockups?: boolean;
+  features?: Array<{
+    icon: string;
+    text: string;
+    color: string;
+  }>;
 }
 
 export default function Hero({
-  title = "Enjoy low to zero fees on your transfers.",
-  ctaText = "Go move money",
-  ctaLink = "/move-money",
+  title = "Get Your Digital Loan with LUYLEUN",
+  subtitle = "Experience Cambodia's first fully digital lending platform. Get approved in minutes, receive funds instantly, and enjoy flexible repayment terms designed for your lifestyle.",
+  ctaText = "Apply for Loan Now",
+  ctaLink = "/apply",
+  secondaryCtaText = "Learn More",
   backgroundImage = "/assets/hero.jpg",
+  showMockups = true,
+  features = [
+    { icon: "clock", text: "5 Min Approval", color: "green" },
+    { icon: "money", text: "Up to $50,000", color: "blue" },
+    { icon: "shield", text: "Secure & Licensed", color: "purple" },
+  ],
 }: HeroProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const getIconSvg = (iconType: string, className: string) => {
+    const icons = {
+      clock: (
+        <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fillRule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+      money: (
+        <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fillRule="evenodd"
+            d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+      shield: (
+        <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fillRule="evenodd"
+            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 616 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+    };
+    return icons[iconType as keyof typeof icons] || icons.clock;
+  };
+
+  const getColorClasses = (color: string) => {
+    const colors = {
+      green: "text-green-600 dark:text-green-400",
+      blue: "text-blue-600 dark:text-blue-400",
+      purple: "text-purple-600 dark:text-purple-400",
+      orange: "text-orange-600 dark:text-orange-400",
+      red: "text-red-600 dark:text-red-400",
+    };
+    return colors[color as keyof typeof colors] || colors.blue;
+  };
   return (
     <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
-      {/* Threads Background - Full Screen */}
-      <div className="absolute inset-0 w-full h-full">
-        <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
-      </div>
-
+      {/* Hyperspeed background effect - component fills the height/width of its parent container */}
+      <Hyperspeed
+        effectOptions={{
+          onSpeedUp: () => {},
+          onSlowDown: () => {},
+          distortion: "turbulentDistortion",
+          length: 400,
+          roadWidth: 10,
+          islandWidth: 2,
+          lanesPerRoad: 4,
+          fov: 90,
+          fovSpeedUp: 150,
+          speedUp: 2,
+          carLightsFade: 0.4,
+          totalSideLightSticks: 20,
+          lightPairsPerRoadWay: 40,
+          shoulderLinesWidthPercentage: 0.05,
+          brokenLinesWidthPercentage: 0.1,
+          brokenLinesLengthPercentage: 0.5,
+          lightStickWidth: [0.12, 0.5],
+          lightStickHeight: [1.3, 1.7],
+          movingAwaySpeed: [60, 80],
+          movingCloserSpeed: [-120, -160],
+          carLightsLength: [400 * 0.03, 400 * 0.2],
+          carLightsRadius: [0.05, 0.14],
+          carWidthPercentage: [0.3, 0.5],
+          carShiftX: [-0.8, 0.8],
+          carFloorSeparation: [0, 5],
+          colors: {
+            roadColor: 0x080808,
+            islandColor: 0x0a0a0a,
+            background: 0x000000,
+            shoulderLines: 0xffffff,
+            brokenLines: 0xffffff,
+            leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
+            rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
+            sticks: 0x03b3c3,
+          },
+        }}
+      />
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl text-center">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="max-w-4xl text-center"
+        >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/10 backdrop-blur-md border border-black/20 dark:border-white/20 rounded-full px-4 py-2 mb-6">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-black dark:text-white text-sm font-medium">
-              Fast Approval • Low Interest • LUYLEUN
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-linear-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/30 dark:to-blue-900/30 border border-cyan-200 dark:border-cyan-700 rounded-full px-4 py-2 mb-6"
+          >
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              🇰🇭 Cambodia's Premier Digital Lending Platform
             </span>
-          </div>
+          </motion.div>
 
           {/* Main Heading */}
-          <h1 className="mb-6 text-4xl font-bold leading-tight text-black dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Get Your
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            <span className="block text-gray-900 dark:text-white">
+              FAST, SECURE
+            </span>
             <span className="block">
               <ShinyText
-                text="Digital Loan"
+                text="DIGITAL LOANS"
                 disabled={false}
                 speed={3}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
               />
             </span>
-            <span className="block text-3xl md:text-4xl lg:text-5xl text-cyan-300">
-              with LUYLEUN
+            <span className="block text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-semibold">
+              for Modern Cambodia
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="mb-8 text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
-            Experience Cambodia's first fully digital lending platform. Get
-            approved in minutes, receive funds instantly, and enjoy flexible
-            repayment terms designed for your lifestyle.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-8 text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto font-medium"
+          >
+            Experience Cambodia's most trusted digital lending platform. Get
+            instant loan approvals, competitive rates, and seamless digital
+            banking – all designed to empower your financial journey.
+          </motion.p>
 
           {/* Features */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -73,8 +219,8 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-black dark:text-white text-sm">
-                5 Min Approval
+              <span className="text-black dark:text-white text-sm font-medium">
+                Instant Approval
               </span>
             </div>
             <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
@@ -89,36 +235,25 @@ export default function Hero({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-black dark:text-white text-sm">
-                Up to $50,000
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
-              <svg
-                className="w-4 h-4 text-purple-600 dark:text-purple-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-black dark:text-white text-sm">
-                Secure & Licensed
+              <span className="text-black dark:text-white text-sm font-medium">
+                Competitive Rates
               </span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             {/* Primary Button */}
             <Link
               href={ctaLink}
-              className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
+              className="group inline-flex items-center justify-center gap-3 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-cyan-400/30 border-2 border-cyan-400/20"
             >
-              Apply for Loan Now
+              <span className="text-lg">Apply Now</span>
               <svg
                 className="h-5 w-5 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -135,32 +270,37 @@ export default function Hero({
             </Link>
 
             {/* Secondary Button */}
-            <button className="inline-flex items-center justify-center gap-2 bg-gray-100 dark:bg-white/10 backdrop-blur-sm border border-gray-300 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-black dark:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <button className="group inline-flex items-center justify-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-lg border-2 border-gray-200/50 dark:border-white/20 hover:bg-white/20 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-white/30 text-gray-800 dark:text-white font-semibold px-10 py-4 rounded-full transition-all duration-300">
+              <svg
+                className="w-5 h-5 group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Learn More
+              <span className="text-lg">Learn More</span>
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-
       {/* Phone Mockups (Optional - can be added as additional prop) */}
       <div className="absolute inset-0 z-5 pointer-events-none">
         {/* Left Phone */}
         <div className="absolute left-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
-          <div className="relative h-[500px] w-[240px]">
+          <div className="relative h-[500px] w-60">
             {/* Add your phone mockup image here */}
           </div>
         </div>
 
         {/* Right Phone */}
         <div className="absolute right-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
-          <div className="relative h-[500px] w-[240px]">
+          <div className="relative h-[500px] w-60">
             {/* Add your phone mockup image here */}
           </div>
         </div>

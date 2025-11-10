@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ShinyTextProps {
   text: string;
@@ -7,22 +7,28 @@ interface ShinyTextProps {
   className?: string;
 }
 
-const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 5, className = '' }) => {
-  const animationDuration = `${speed}s`;
-
+const ShinyText: React.FC<ShinyTextProps> = ({
+  text,
+  disabled = false,
+  speed = 3,
+  className = "",
+}) => {
   return (
-    <div
-      className={`text-[#b5b5b5a4] bg-clip-text inline-block ${disabled ? '' : 'animate-shine'} ${className}`}
+    <span
+      className={`inline-block animate-shine ${className}`}
       style={{
-        backgroundImage:
-          'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)',
-        backgroundSize: '200% 100%',
-        WebkitBackgroundClip: 'text',
-        animationDuration: animationDuration
+        background:
+          "linear-gradient(110deg, #06b6d4 0%, #ffffff 45%, #06b6d4 55%, #3b82f6 100%)",
+        backgroundSize: "200% 100%",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        color: "transparent",
+        animationDuration: `${speed}s`,
+        animationPlayState: disabled ? "paused" : "running",
       }}
     >
       {text}
-    </div>
+    </span>
   );
 };
 
