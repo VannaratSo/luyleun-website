@@ -48,14 +48,14 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-gray-900 dark:text-white">
             <span className="block">
               {title.split(" ").slice(0, 2).join(" ")}
             </span>
             <span className="block bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               {title.split(" ").slice(2, 4).join(" ")}
             </span>
-            <span className="block text-4xl md:text-5xl lg:text-6xl">
+            <span className="block text-2xl md:text-3xl lg:text-4xl">
               {title.split(" ").slice(4).join(" ")}
             </span>
           </h1>

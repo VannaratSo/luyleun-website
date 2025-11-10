@@ -20,7 +20,7 @@ export default function ShowReel() {
               SHOWCASE
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-linear-to-r from-gray-900 via-blue-600 to-blue-800 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-6 bg-linear-to-r from-gray-900 via-blue-600 to-blue-800 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent">
             Our ShowReel
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -92,55 +92,6 @@ export default function ShowReel() {
                     LIVE
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
-        >
-          <div className="text-center group">
-            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
-                100+
-              </div>
-              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
-                Projects Completed
-              </div>
-            </div>
-          </div>
-          <div className="text-center group">
-            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
-                50M+
-              </div>
-              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
-                Users Reached
-              </div>
-            </div>
-          </div>
-          <div className="text-center group">
-            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
-                25+
-              </div>
-              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
-                Countries Served
-              </div>
-            </div>
-          </div>
-          <div className="text-center group">
-            <div className="bg-zinc-900/50 dark:bg-gray-800/50 backdrop-blur-sm border border-zinc-800 dark:border-gray-700 rounded-2xl p-6 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">
-                99%
-              </div>
-              <div className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-wide">
-                Client Satisfaction
               </div>
             </div>
           </div>

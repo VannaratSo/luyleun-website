@@ -1,0 +1,15 @@
+This is a placeholder file. Replace with your actual card.glb 3D model file.
+
+To create a card.glb file:
+1. Use Blender or other 3D software to create a card model
+2. Export as .glb format
+3. Place it in this directory
+
+The model should include:
+- card geometry (main card body)
+- clip geometry (optional lanyard clip)
+- clamp geometry (optional lanyard clamp)
+
+Materials should include:
+- base material with map texture
+- metal material for hardware components
