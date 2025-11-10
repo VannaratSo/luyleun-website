@@ -251,7 +251,11 @@ export default function Hero({
             {/* Primary Button */}
             <Link
               href={ctaLink}
+<<<<<<< HEAD
               className="group inline-flex items-center justify-center gap-3 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-cyan-400/30 border-2 border-cyan-400/20"
+=======
+              className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
+>>>>>>> 10dab982d4b52710975a323a1e66b8a70a6f7c7c
             >
               <span className="text-lg">Apply Now</span>
               <svg

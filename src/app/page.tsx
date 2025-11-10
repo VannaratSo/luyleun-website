@@ -1,4 +1,5 @@
 import AboutUs from "@/components/AboutUs";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import LoanSteps from "@/components/LoanSteps";
 import Navbar from "@/components/Navbar";
@@ -12,6 +13,7 @@ export default function Home() {
       <LoanSteps />
       <AboutUs />
       <ShowReel />
+      <Footer />
     </main>
   );
 }
