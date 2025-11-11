@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import TextReveal from "./TextReveal";
 
 interface AboutUsProps {
   title?: string;
@@ -61,35 +62,31 @@ const AboutUs: React.FC<AboutUsProps> = ({
         </div>
 
         {/* Right Side - Content */}
-        <div className="flex flex-col justify-center space-y-6 text-left order-1 lg:order-2">
+        <div className="flex flex-col justify-center items-center space-y-6 text-center order-1 lg:order-2">
           {/* Badge */}
-          <div className="inline-flex items-center w-fit gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
+          <div className="inline-flex items-center w-fit gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2 mx-auto">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span className="text-gray-800 dark:text-white text-sm font-medium">
               Trusted • Innovative • Customer-First
             </span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-gray-900 dark:text-white">
-            <span className="block">
-              {title.split(" ").slice(0, 2).join(" ")}
-            </span>
-            <span className="block bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              {title.split(" ").slice(2, 4).join(" ")}
-            </span>
-            <span className="block text-2xl md:text-3xl lg:text-4xl">
-              {title.split(" ").slice(4).join(" ")}
-            </span>
-          </h1>
+          {/* Main Heading with TextReveal */}
+          <TextReveal
+            className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-white text-center"
+            delay={0.1}
+            staggerDelay={0.08}
+          >
+            {title}
+          </TextReveal>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-200 leading-relaxed max-w-lg">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-200 leading-relaxed max-w-lg mx-auto text-center">
             {subtitle}
           </p>
 
           {/* Features */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 justify-center">
             <div className="flex items-center gap-2 border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
               <svg
                 className="w-4 h-4 text-green-600 dark:text-green-400"
@@ -141,7 +138,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
             <Link
               href={ctaLink}
               className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"

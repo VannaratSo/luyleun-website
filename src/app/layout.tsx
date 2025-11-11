@@ -26,7 +26,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-black text-white`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-black text-white`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

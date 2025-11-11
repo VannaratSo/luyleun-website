@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
+import TextReveal from "./TextReveal";
 
 interface FAQItem {
   id: number;
@@ -85,7 +86,7 @@ export default function FAQ() {
   };
 
   return (
-        <section className="bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
+    <section className="bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-12">
@@ -104,17 +105,13 @@ export default function FAQ() {
             </span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 dark:text-white mb-6"
+          <TextReveal
+            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center"
+            delay={0.1}
+            staggerDelay={0.1}
           >
-            Got Questions?{" "}
-            <span className="bg-linear-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-              We Have Answers
-            </span>
-          </motion.h2>
+            Got Questions? We Have Answers
+          </TextReveal>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

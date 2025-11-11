@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import TextReveal from "./TextReveal";
 
 interface Step {
   id: number;
@@ -134,15 +135,13 @@ export default function PhoneSteps() {
             </span>
           </motion.div>
 
-          <motion.h2
-            variants={stepVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 dark:text-white mb-6"
+          <TextReveal
+            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center"
+            delay={0.1}
+            staggerDelay={0.08}
           >
-            Get Your Loan in{" "}
-            <span className="bg-linear-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
-              Four Simple Steps
-            </span>
-          </motion.h2>
+            Get Your Loan in Four Simple Steps
+          </TextReveal>
 
           <motion.p
             variants={stepVariants}

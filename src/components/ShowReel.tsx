@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import TextReveal from "./TextReveal";
 
 interface VideoData {
   id: string;
@@ -87,15 +88,17 @@ export default function ShowReel() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-block bg-blue-100 dark:bg-blue-600/20 border border-blue-300 dark:border-blue-500/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
-              SHOWCASE
-            </span>
+          <div className="inline-block bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
+            <span className="text-blue-400 text-sm font-medium">SHOWCASE</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-6 bg-linear-to-r from-gray-900 via-blue-600 to-blue-800 dark:from-white dark:via-blue-200 dark:to-blue-400 bg-clip-text text-transparent">
+          <TextReveal
+            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center"
+            delay={0.1}
+            staggerDelay={0.1}
+          >
             Our ShowReel
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          </TextReveal>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Discover the innovation behind our digital solutions. Watch how
             we're revolutionizing the financial landscape and creating seamless
             experiences for millions.

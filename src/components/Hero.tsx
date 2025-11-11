@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ShinyText from "./ShinyText";
 import Hyperspeed from "./Hyperspeed";
+import TextReveal from "./TextReveal";
 
 interface HeroProps {
   title?: string;
@@ -170,28 +171,14 @@ export default function Hero({
             </span>
           </motion.div>
 
-          {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          {/* Main Heading with TextReveal */}
+          <TextReveal
+            className="mb-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl text-center"
+            delay={0.2}
+            staggerDelay={0.1}
           >
-            <span className="block text-gray-900 dark:text-white">
-              FAST, SECURE
-            </span>
-            <span className="block">
-              <ShinyText
-                text="DIGITAL LOANS"
-                disabled={false}
-                speed={3}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
-              />
-            </span>
-            <span className="block text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-semibold">
-              for Modern Cambodia
-            </span>
-          </motion.h1>
+            FAST, SECURE DIGITAL LOANS for Modern Cambodia
+          </TextReveal>
 
           {/* Subtitle */}
           <motion.p
