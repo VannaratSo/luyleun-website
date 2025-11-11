@@ -1,4 +1,5 @@
 import AboutUs from "@/components/AboutUs";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <PhoneSteps />
       <AboutUs />
       <ShowReel />
+      <FAQ />
       <Footer />
     </main>
   );

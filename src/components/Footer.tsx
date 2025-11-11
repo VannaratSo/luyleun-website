@@ -122,41 +122,6 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10">
-        {/* Newsletter Section */}
-        <div className="border-b border-gray-700/50 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 backdrop-blur-sm">
-          <div className="max-w-6xl mx-auto px-6 py-12">
-            <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-normal mb-4 bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                Stay Updated with LUYLEUN
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Get the latest updates on loan offers, financial tips, and
-                exclusive promotions delivered to your inbox.
-              </p>
-
-              <form
-                onSubmit={handleSubscribe}
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              >
-                <input
-                  type="email"
-                  value={emailSubscription}
-                  onChange={(e) => setEmailSubscription(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent backdrop-blur-sm"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-400/30"
-                >
-                  {isSubscribed ? "Subscribed!" : "Subscribe"}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
         {/* Main Footer Content */}
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">

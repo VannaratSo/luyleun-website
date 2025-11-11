@@ -12,6 +12,7 @@
     "preview": "next build && next start"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-three/drei": "^10.7.6",

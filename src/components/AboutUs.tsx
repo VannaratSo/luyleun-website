@@ -1,12 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface AboutUsProps {
   title?: string;
   subtitle?: string;
   ctaText?: string;
   ctaLink?: string;
-  backgroundImage?: string;
 }
 
 const AboutUs: React.FC<AboutUsProps> = ({
@@ -14,7 +15,6 @@ const AboutUs: React.FC<AboutUsProps> = ({
   subtitle = "Empowering financial freedom through innovative digital lending solutions. We believe everyone deserves access to fair, transparent, and fast financial services.",
   ctaText = "Learn More",
   ctaLink = "/about",
-  backgroundImage = "/assets/Background.png",
 }) => {
   return (
     <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
@@ -22,19 +22,42 @@ const AboutUs: React.FC<AboutUsProps> = ({
       <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Left Side - Mockup Image */}
         <div className="flex justify-center items-center order-2 lg:order-1">
-          <div className="relative">
-            <Image
-              src="/assets/mockup.png"
-              alt="LUYLEUN App Mockup"
-              width={1000}
-              height={600}
-              className="object-contain"
-              priority
-            />
-            {/* Optional: Add floating elements or animations */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-400 rounded-full animate-pulse opacity-60"></div>
-            <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-blue-500 rounded-full animate-bounce opacity-40"></div>
-          </div>
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: -100, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+              delay: 0.3,
+            }}
+            whileHover={{
+              scale: 1.05,
+              rotateY: 5,
+              transition: { duration: 0.3 },
+            }}
+          >
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+                rotateZ: [0, 1, 0, -1, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src="/assets/ll glass.png"
+                alt="LUYLEUN App Mockup"
+                width={500}
+                height={600}
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Right Side - Content */}
@@ -138,17 +161,6 @@ const AboutUs: React.FC<AboutUsProps> = ({
                 />
               </svg>
             </Link>
-
-            <button className="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/40 text-gray-800 dark:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Our Story
-            </button>
           </div>
         </div>
       </div>
