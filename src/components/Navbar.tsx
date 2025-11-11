@@ -17,34 +17,11 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: "Save & Invest", href: "/save-and-invest" },
-  { label: "Move Money", href: "/move-money" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Service", href: "/service" },
-  {
-    label: "Shop",
-    href: "/shop",
-    dropdown: [
-      { label: "Payments", href: "/shop#payments" },
-      { label: "Rewards", href: "/shop#rewards" },
-      { label: "Promos", href: "/promos" },
-    ],
-  },
-  {
-    label: "Credit",
-    href: "/credit",
-    dropdown: [{ label: "MoreTyme", href: "/pay-later?faq-tags=bnpl" }],
-  },
-  {
-    label: "Media",
-    href: "/media",
-    dropdown: [
-      { label: "All Media", href: "/media" },
-      { label: "News", href: "/news" },
-      { label: "Stories", href: "/stories" },
-      { label: "Videos", href: "/videos" },
-    ],
-  },
-  { label: "Help", href: "/help" },
+  { label: "Credit Score", href: "/credit-score" },
+  { label: "Calculator", href: "/calculator" },
 ];
 
 export default function Navbar() {

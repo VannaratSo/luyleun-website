@@ -46,7 +46,7 @@ const TextReveal: React.FC<TextRevealProps> = ({
       y: 20,
       filter: "blur(4px)",
       transition: {
-        ease: "easeInOut",
+        ease: "easeInOut", // use a valid easing string
         duration: 0.6,
       },
     },

@@ -997,6 +997,7 @@ class App {
   speedUpTarget: number;
   speedUp: number;
   timeOffset: number;
+  boundResizeHandler: () => void;
 
   constructor(container: HTMLElement, options: HyperspeedOptions) {
     this.options = options;
@@ -1079,13 +1080,28 @@ class App {
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchEnd = this.onTouchEnd.bind(this);
     this.onContextMenu = this.onContextMenu.bind(this);
+    this.boundResizeHandler = this.onWindowResize.bind(this);
 
-    window.addEventListener("resize", this.onWindowResize.bind(this));
+    window.addEventListener("resize", this.boundResizeHandler);
   }
 
   onWindowResize() {
+    if (
+      this.disposed ||
+      !this.container ||
+      !this.renderer ||
+      !this.camera ||
+      !this.composer
+    ) {
+      return;
+    }
+
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
+
+    if (width <= 0 || height <= 0) {
+      return;
+    }
 
     this.renderer.setSize(width, height);
     this.camera.aspect = width / height;
@@ -1268,7 +1284,9 @@ class App {
     this.disposed = true;
 
     // Remove event listeners first
-    window.removeEventListener("resize", this.onWindowResize.bind(this));
+    if (this.boundResizeHandler) {
+      window.removeEventListener("resize", this.boundResizeHandler);
+    }
     if (this.container) {
       this.container.removeEventListener("mousedown", this.onMouseDown);
       this.container.removeEventListener("mouseup", this.onMouseUp);

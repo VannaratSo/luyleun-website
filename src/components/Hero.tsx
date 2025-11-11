@@ -144,9 +144,9 @@ export default function Hero({
             background: 0x000000,
             shoulderLines: 0xffffff,
             brokenLines: 0xffffff,
-            leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
-            rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
-            sticks: 0x03b3c3,
+            leftCars: [0xffffff, 0x6750a2, 0x0000ff],
+            rightCars: [0x03b3c3, 0x00ff00, 0x324555],
+            sticks: 0x0000ff,
           },
         }}
       />
@@ -191,42 +191,6 @@ export default function Hero({
             instant loan approvals, competitive rates, and seamless digital
             banking – all designed to empower your financial journey.
           </motion.p>
-
-          {/* Features */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
-              <svg
-                className="w-4 h-4 text-green-600 dark:text-green-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-black dark:text-white text-sm font-medium">
-                Instant Approval
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-gray-100 dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/20 rounded-full px-4 py-2">
-              <svg
-                className="w-4 h-4 text-blue-600 dark:text-blue-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-black dark:text-white text-sm font-medium">
-                Competitive Rates
-              </span>
-            </div>
-          </div>
 
           {/* CTA Buttons */}
           <motion.div
