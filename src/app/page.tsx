@@ -9,7 +9,7 @@ import ShowReel from "@/components/ShowReel";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black min-h-screen">
       <Navbar />
       <Hero />
       <PhoneSteps />

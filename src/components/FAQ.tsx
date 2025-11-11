@@ -85,7 +85,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
+        <section className="bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-12">

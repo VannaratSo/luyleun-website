@@ -112,7 +112,7 @@ export default function PhoneSteps() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-black overflow-hidden">
+    <section className="py-20 bg-black overflow-hidden">
       <div
         ref={containerRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"

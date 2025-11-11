@@ -108,7 +108,7 @@ export default function Hero({
     return colors[color as keyof typeof colors] || colors.blue;
   };
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
       {/* Hyperspeed background effect - component fills the height/width of its parent container */}
       <Hyperspeed
         effectOptions={{
