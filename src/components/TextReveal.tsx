@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface TextRevealProps {
   children: string;
@@ -19,7 +19,7 @@ const TextReveal: React.FC<TextRevealProps> = ({
   // Split text into words
   const words = children.split(" ");
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -30,13 +30,13 @@ const TextReveal: React.FC<TextRevealProps> = ({
     }),
   };
 
-  const child = {
+  const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
       transition: {
-        type: "spring" as const,
+        type: "spring",
         damping: 12,
         stiffness: 100,
       },
@@ -46,8 +46,8 @@ const TextReveal: React.FC<TextRevealProps> = ({
       y: 20,
       filter: "blur(4px)",
       transition: {
-        ease: "easeInOut", // use a valid easing string
         duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easing array
       },
     },
   };
