@@ -188,7 +188,7 @@ const Feedback: React.FC = () => {
   };
 
   return (
-    <section className="bg-black text-white py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
+    <section className="bg-white dark:bg-black text-black dark:text-white py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
       <div className="max-w-6xl mx-auto relative z-10 w-full">
         {/* Header */}
         <motion.div
@@ -199,16 +199,16 @@ const Feedback: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/40 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
             <Icon icon="solar:heart-bold" className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-300 text-sm font-medium">
+            <span className="text-black text-sm font-medium">
               CUSTOMER FEEDBACK
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-bla mb-6 text-center">
             What Our Customers Say
           </h2>
 
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
             Real stories from real people who trust LUYLEUN for their financial
             needs. Join thousands of satisfied customers across Cambodia.
           </p>

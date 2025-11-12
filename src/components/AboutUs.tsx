@@ -18,7 +18,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
   ctaLink = "/about",
 }) => {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
       {/* Main Content Grid Layout */}
       <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Left Side - Mockup Image */}
@@ -73,7 +73,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
 
           {/* Main Heading with TextReveal */}
           <TextReveal
-            className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-white text-center"
+            className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-black dark:text-white text-center"
             delay={0.1}
             staggerDelay={0.08}
           >
@@ -81,7 +81,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </TextReveal>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-200 leading-relaxed max-w-lg mx-auto text-center">
+          <p className="text-lg md:text-xl text-black dark:text-white leading-relaxed max-w-lg mx-auto text-center">
             {subtitle}
           </p>
 

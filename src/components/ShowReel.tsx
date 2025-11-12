@@ -79,7 +79,7 @@ export default function ShowReel() {
     setCurrentVideo(video);
   };
   return (
-    <section className="bg-black text-white py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
+    <section className="bg-white dark:bg-black text-white py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header */}
         <motion.div
@@ -92,7 +92,7 @@ export default function ShowReel() {
             <span className="text-blue-400 text-sm font-medium">SHOWCASE</span>
           </div>
           <TextReveal
-            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center"
+            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-black dark:text-white text-center"
             delay={0.1}
             staggerDelay={0.1}
           >
