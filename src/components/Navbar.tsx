@@ -23,21 +23,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { label: "HOME", href: "/" },
-  {
-    label: "ABOUT",
-    href: "/about",
-    dropdown: [
-      {
-        title: "General",
-        items: [
-          { label: "About Us", href: "/about/us" },
-          { label: "Blog", href: "/about/blog" },
-          { label: "News & Media", href: "/about/news" },
-          { label: "Reviews", href: "/about/reviews" },
-        ],
-      },
-    ],
-  },
+
   {
     label: "SERVICES",
     href: "/services",
@@ -45,23 +31,24 @@ const navLinks: NavLink[] = [
       {
         title: "Our Services",
         items: [
-          { label: "Loan Services", href: "/services/loans" },
-          { label: "Financial Planning", href: "/services/planning" },
-          { label: "Investment Advisory", href: "/services/investment" },
-          { label: "Insurance Solutions", href: "/services/insurance" },
+          { label: "AI CREDIT SCORE", href: "/credit-score" },
+          { label: "CALCULATOR", href: "/calculator" },
+          { label: "LOAN SERVICES", href: "/services/loans" },
+          { label: "FINANCIAL PLANNING", href: "/services/planning" },
+          { label: "INVESTMENT ADVISORY", href: "/services/investment" },
+          { label: "INSURANCE SOLUTIONS", href: "/services/insurance" },
         ],
       },
       {
         title: "Support",
         items: [
-          { label: "Documentation", href: "/services/docs" },
-          { label: "Help Center", href: "/services/help" },
-          { label: "Contact Us", href: "/services/contact" },
+          { label: "DOCUMENTATION", href: "/services/docs" },
+          { label: "HELP CENTER", href: "/services/help" },
+          { label: "CONTACT US", href: "/services/contact" },
         ],
       },
     ],
   },
-  { label: "CREDIT SCORE", href: "/credit-score" },
   {
     label: "COMPANY",
     href: "/company",
@@ -69,34 +56,32 @@ const navLinks: NavLink[] = [
       {
         title: "General",
         items: [
-          { label: "About Us", href: "/company/about" },
-          { label: "Blog", href: "/company/blog" },
-          { label: "News & Media", href: "/company/news" },
-          { label: "Company Reviews", href: "/company/reviews" },
+          { label: "ABOUT US", href: "/company/about" },
+          { label: "NEWS & MEDIA", href: "/company/news" },
+          { label: "COMPANY REVIEWS", href: "/company/reviews" },
         ],
       },
       {
         title: "Careers",
         items: [
-          { label: "Careers", href: "/company/careers" },
-          { label: "Working at Company", href: "/company/working" },
-          { label: "Culture", href: "/company/culture" },
-          { label: "Talent Programmes", href: "/company/talent" },
-          { label: "STEM Champions", href: "/company/stem" },
-          { label: "Diversity & Inclusion", href: "/company/diversity" },
-          { label: "Relocation", href: "/company/relocation" },
+          { label: "CAREER", href: "/company/careers" },
+          { label: "WORKING AT COMPANY", href: "/company/working" },
+          { label: "CULTURE", href: "/company/culture" },
+          { label: "TALENT PROGRAMMES", href: "/company/talent" },
+          { label: "STEM CHAMPIONS", href: "/company/stem" },
+          { label: "DIVERSITY & INCLUSION", href: "/company/diversity" },
+          { label: "RELOCATION", href: "/company/relocation" },
         ],
       },
       {
         title: "Shareholder Relations",
         items: [
-          { label: "Annual Report 2024", href: "/company/annual-report" },
-          { label: "Reports and Results", href: "/company/reports" },
+          { label: "ANNUAL REPORT 2024", href: "/company/annual-report" },
+          { label: "REPORTS AND RESULTS", href: "/company/reports" },
         ],
       },
     ],
   },
-  { label: "CALCULATOR", href: "/calculator" },
 ];
 
 export default function Navbar() {
