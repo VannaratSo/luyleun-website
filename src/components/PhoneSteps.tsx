@@ -90,7 +90,7 @@ export default function PhoneSteps() {
                 <h3 className="text-4xl md:text-4xl  text-black dark:text-white mb-4">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 dark:text-white text-4xl md:text-4xl">
+                <p className="text-black dark:text-white text-4xl md:text-4xl">
                   {step.description}
                 </p>
               </div>

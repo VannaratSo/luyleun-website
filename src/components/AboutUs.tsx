@@ -18,7 +18,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
   ctaLink = "/about",
 }) => {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white dark:bg-black">
+    <section className="overflow-hidden bg-white dark:bg-black">
       {/* Main Content Grid Layout */}
       <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Left Side - Mockup Image */}

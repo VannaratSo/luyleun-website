@@ -18,9 +18,11 @@ export default function CreativeCommunityImageTwoBG() {
           <h2 className="text-4xl md:text-4xl   leading-tight">
             Create. Inspire.
             <br />
-            <span className="text-[#ffffff]">Share Your Vision.</span>
+            <span className="text-black dark:text-white">
+              Share Your Vision.
+            </span>
           </h2>
-          <p className="text-white text-4xl mb-10">
+          <p className="text-black dark:text-white text-4xl mb-10">
             Join a creative network that helps you grow your projects,
             collaborate with others, and showcase your best work.
           </p>
@@ -28,14 +30,14 @@ export default function CreativeCommunityImageTwoBG() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 bg-white text-black rounded-full font-medium  shadow-md hover:bg-gray-900 transition"
+              className="px-6 py-3 bg-white text-black rounded-full font-medium hover:text-white shadow-md hover:bg-black transition"
             >
               Join Now
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 border border-white rounded-full font-medium hover:bg-black hover:text-white transition"
+              className="px-6 py-3 border text-white dark:text-white border-white bg-black rounded-full font-medium hover:bg-black hover:text-white transition"
             >
               Learn More
             </motion.button>

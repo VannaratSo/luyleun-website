@@ -109,7 +109,7 @@ export default function Hero({
     return colors[color as keyof typeof colors] || colors.blue;
   };
   return (
-    <section className="relative h-screen min-h-[1000px] w-full overflow-hidden bg-black">
+    <section className="relative h-screen min-h-[1000px] w-full overflow-hidden text-white  bg-black">
       <Balatro isRotate={false} mouseInteraction={true} pixelFilter={700} />
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
@@ -146,7 +146,7 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-8 text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto font-medium"
+            className="mb-8 text-lg md:text-xl text-white dark:text-white leading-relaxed max-w-3xl mx-auto font-medium"
           >
             Experience Cambodia's most trusted digital lending platform. Get
             instant loan approvals, competitive rates, and seamless digital
@@ -182,7 +182,7 @@ export default function Hero({
             </Link>
 
             {/* Secondary Button */}
-            <button className="group inline-flex items-center justify-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-lg border-2 border-gray-200/50 dark:border-white/20 hover:bg-white/20 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-white/30 text-gray-800 dark:text-white font-semibold px-10 py-4 rounded-full transition-all duration-300">
+            <button className="group inline-flex items-center justify-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-lg border-2 border-gray-200/50 dark:border-white/20 hover:bg-white/20 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-white/30 text-white dark:text-white font-semibold px-10 py-4 rounded-full transition-all duration-300">
               <svg
                 className="w-5 h-5 group-hover:scale-110 transition-transform"
                 fill="none"

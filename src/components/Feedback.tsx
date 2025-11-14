@@ -180,9 +180,7 @@ const Feedback: React.FC = () => {
       <Icon
         key={i}
         icon="solar:star-bold"
-        className={`w-5 h-5 ${
-          i < rating ? "text-yellow-400" : "text-gray-300"
-        }`}
+        className={`w-5 h-5 ${i < rating ? "text-blue-600" : "text-gray-300"}`}
       />
     ));
   };
@@ -249,10 +247,10 @@ const Feedback: React.FC = () => {
                           {feedbackData[currentIndex].name.charAt(0)}
                         </span>
                       </div>
-                      <h4 className="text-white font-semibold text-lg mb-1">
+                      <h4 className="text-black dark:text-white font-semibold text-lg mb-1">
                         {feedbackData[currentIndex].name}
                       </h4>
-                      <p className="text-blue-300 text-sm mb-1">
+                      <p className="text-blue-400 text-sm mb-1">
                         {feedbackData[currentIndex].role}
                       </p>
                       <p className="text-gray-400 text-sm mb-3">
@@ -272,7 +270,7 @@ const Feedback: React.FC = () => {
                         icon="solar:quote-up-bold"
                         className="w-8 h-8 text-blue-400 mb-4"
                       />
-                      <blockquote className="text-gray-200 text-lg leading-relaxed italic">
+                      <blockquote className="text-black dark:text-white text-lg leading-relaxed italic">
                         "{feedbackData[currentIndex].comment}"
                       </blockquote>
                     </div>
@@ -319,7 +317,7 @@ const Feedback: React.FC = () => {
         {/* Progress Bar */}
         {isAutoPlaying && !isPaused && (
           <div className="w-full max-w-md mx-auto mt-6 mb-2">
-            <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+            <div className="h-1 bg-gray-700 dark:bg-white rounded-full overflow-hidden">
               <div
                 className="h-full bg-linear-to-r from-blue-400 to-blue-700 transition-all duration-75 ease-linear"
                 style={{ width: `${progress}%` }}
@@ -337,7 +335,7 @@ const Feedback: React.FC = () => {
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? "bg-blue-400 scale-125"
-                  : "bg-white/30 hover:bg-white/50"
+                  : "bg-gray-400 hover:bg-white/50"
               }`}
             />
           ))}
