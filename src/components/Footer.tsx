@@ -235,7 +235,6 @@ export default function Footer() {
                   <span className="text-green-400">Licensed & Regulated</span>
                 </div>
               </div>
-
               <div className="flex items-center gap-6 text-sm">
                 <Link
                   href="/security"

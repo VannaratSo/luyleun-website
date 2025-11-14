@@ -10,18 +10,93 @@ interface DropdownItem {
   href: string;
 }
 
+interface DropdownSection {
+  title: string;
+  items: DropdownItem[];
+}
+
 interface NavLink {
   label: string;
   href: string;
-  dropdown?: DropdownItem[];
+  dropdown?: DropdownSection[];
 }
 
 const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Service", href: "/service" },
-  { label: "Credit Score", href: "/credit-score" },
-  { label: "Calculator", href: "/calculator" },
+  { label: "HOME", href: "/" },
+  {
+    label: "ABOUT",
+    href: "/about",
+    dropdown: [
+      {
+        title: "General",
+        items: [
+          { label: "About Us", href: "/about/us" },
+          { label: "Blog", href: "/about/blog" },
+          { label: "News & Media", href: "/about/news" },
+          { label: "Reviews", href: "/about/reviews" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "SERVICES",
+    href: "/services",
+    dropdown: [
+      {
+        title: "Our Services",
+        items: [
+          { label: "Loan Services", href: "/services/loans" },
+          { label: "Financial Planning", href: "/services/planning" },
+          { label: "Investment Advisory", href: "/services/investment" },
+          { label: "Insurance Solutions", href: "/services/insurance" },
+        ],
+      },
+      {
+        title: "Support",
+        items: [
+          { label: "Documentation", href: "/services/docs" },
+          { label: "Help Center", href: "/services/help" },
+          { label: "Contact Us", href: "/services/contact" },
+        ],
+      },
+    ],
+  },
+  { label: "CREDIT SCORE", href: "/credit-score" },
+  {
+    label: "COMPANY",
+    href: "/company",
+    dropdown: [
+      {
+        title: "General",
+        items: [
+          { label: "About Us", href: "/company/about" },
+          { label: "Blog", href: "/company/blog" },
+          { label: "News & Media", href: "/company/news" },
+          { label: "Company Reviews", href: "/company/reviews" },
+        ],
+      },
+      {
+        title: "Careers",
+        items: [
+          { label: "Careers", href: "/company/careers" },
+          { label: "Working at Company", href: "/company/working" },
+          { label: "Culture", href: "/company/culture" },
+          { label: "Talent Programmes", href: "/company/talent" },
+          { label: "STEM Champions", href: "/company/stem" },
+          { label: "Diversity & Inclusion", href: "/company/diversity" },
+          { label: "Relocation", href: "/company/relocation" },
+        ],
+      },
+      {
+        title: "Shareholder Relations",
+        items: [
+          { label: "Annual Report 2024", href: "/company/annual-report" },
+          { label: "Reports and Results", href: "/company/reports" },
+        ],
+      },
+    ],
+  },
+  { label: "CALCULATOR", href: "/calculator" },
 ];
 
 export default function Navbar() {
@@ -31,30 +106,25 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 50);
+      setIsScrolled(window.scrollY > 50);
     };
 
-    // Add initial check
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-linear-to-r from-gray-900 via-black to-gray-900 backdrop-blur-xl border-b border-white/10"
-          : "bg-linear-to-r from-blue-500  to-blue-900 "
+      className={`fixed top-0 left-0 right-0 z-50 bg-blue-700 border-b border-glass transition-all duration-300 ${
+        isScrolled ? "shadow-lg" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center group space-x-3">
-            {/* Logo Image */}
-            <div className="relative w-12 h-12 transition-all duration-300 group-hover:scale-110">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="flex items-center group space-x-3 shrink-0">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-all duration-300 group-hover:scale-110">
               <Image
                 src="/assets/LL glass.png"
                 alt="LUYLEUN Logo"
@@ -63,32 +133,121 @@ export default function Navbar() {
                 priority
               />
             </div>
-
-            {/* Brand Text */}
-            <div className="relative transition-all duration-300 group-hover:scale-105">
-              <h1 className="text-2xl font-bold text-white tracking-tight">
-                <span className="bg-linear-to-r from-cyan-400 to-white bg-clip-text text-transparent">
-                  LUYLEUN
-                </span>
-              </h1>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 rounded-full"></div>
-            </div>
           </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center flex-1 justify-center mx-8">
+            <ul className="flex items-center space-x-1">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  {link.dropdown ? (
+                    <div className="relative group">
+                      <button
+                        className="relative text-sm font-medium text-white hover:text-blue-400 py-2 px-4 rounded-lg transition-all duration-200 flex items-center gap-1"
+                        onMouseEnter={() => setOpenDropdown(link.label)}
+                        onMouseLeave={() => setOpenDropdown(null)}
+                      >
+                        {link.label}
+                        <svg
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                            openDropdown === link.label ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2.5}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-blue-400 group-hover:w-3/4 transition-all duration-300"></span>
+                      </button>
+
+                      {/* Full Screen Mega Dropdown Menu */}
+                      <div
+                        className={`fixed left-0 right-0 top-20 transition-all duration-300 ${
+                          openDropdown === link.label
+                            ? "opacity-100 visible translate-y-0"
+                            : "opacity-0 invisible -translate-y-4"
+                        }`}
+                        onMouseEnter={() => setOpenDropdown(link.label)}
+                        onMouseLeave={() => setOpenDropdown(null)}
+                      >
+                        <div className="bg-blue-700 border-t border-white shadow-2xl">
+                          <div className="max-w-7xl mx-auto px-8 py-12">
+                            <div
+                              className={`grid gap-12 ${
+                                link.dropdown.length === 1
+                                  ? "grid-cols-1 max-w-md"
+                                  : link.dropdown.length === 2
+                                  ? "grid-cols-2"
+                                  : "grid-cols-3"
+                              }`}
+                            >
+                              {link.dropdown.map((section) => (
+                                <div key={section.title}>
+                                  <h3 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-6">
+                                    {section.title}
+                                  </h3>
+                                  <ul className="space-y-3">
+                                    {section.items.map((item) => (
+                                      <li key={item.label}>
+                                        <Link
+                                          href={item.href}
+                                          className="block text-base text-white/90 hover:text-white transition-all duration-200 hover:translate-x-1"
+                                        >
+                                          {item.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="relative text-sm font-medium text-white hover:text-blue-400 py-2 px-4 rounded-lg transition-all duration-200 group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-blue-400 group-hover:w-3/4 transition-all duration-300"></span>
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right Actions */}
+          <div className="hidden lg:flex items-center space-x-4 shrink-0">
+            <ModeToggle />
+            <button
+              className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 ${
+                isScrolled
+                  ? "bg-linear-to-r from-blue-600 to-blue-500 text-white hover:shadow-lg hover:shadow-blue-500/50"
+                  : "bg-white  text-blue-600 hover:bg-white/90 hover:shadow-lg"
+              }`}
+            >
+              DOWNLOAD APP
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 rounded-lg transition-all duration-300 hover:scale-110 group ${
-              isScrolled
-                ? "text-white hover:text-blue-400"
-                : "text-white hover:text-cyan-300"
-            }`}
+            className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-all duration-200"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <svg
-                className="w-6 h-6 transform rotate-180 transition-transform duration-300 group-hover:rotate-90"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -101,11 +260,7 @@ export default function Navbar() {
                 />
               </svg>
             ) : (
-              <svg
-                className="w-6 h-6 transform transition-transform duration-300 group-hover:scale-110"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -114,139 +269,27 @@ export default function Navbar() {
               </svg>
             )}
           </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center flex-1 mx-8">
-            <ul className="flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <li key={link.label} className="relative">
-                  {link.dropdown ? (
-                    <div className="relative group">
-                      <button
-                        className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
-                          isScrolled
-                            ? "text-white hover:text-blue-400"
-                            : "text-white hover:text-white"
-                        }`}
-                        onMouseEnter={() => setOpenDropdown(link.label)}
-                        onMouseLeave={() => setOpenDropdown(null)}
-                      >
-                        <span className="relative z-10">{link.label}</span>
-                        {/* Animated underline */}
-                        <div
-                          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
-                            isScrolled ? "bg-blue-400" : "bg-cyan-300"
-                          }`}
-                        ></div>
-                      </button>
-
-                      {/* Dropdown Menu */}
-                      <div
-                        className={`absolute top-full left-0 mt-1 transition-all duration-200 ${
-                          openDropdown === link.label
-                            ? "opacity-100 visible"
-                            : "opacity-0 invisible"
-                        }`}
-                        onMouseEnter={() => setOpenDropdown(link.label)}
-                        onMouseLeave={() => setOpenDropdown(null)}
-                      >
-                        <ul className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl py-3 min-w-48 border border-white/10 backdrop-blur-lg">
-                          {link.dropdown.map((item) => (
-                            <li key={item.label}>
-                              <Link
-                                href={item.href}
-                                className="block px-5 py-3 text-sm text-white hover:text-blue-400 hover:bg-white/10 transition-all duration-200 hover:translate-x-1 relative overflow-hidden group"
-                              >
-                                <span className="relative z-10">
-                                  {item.label}
-                                </span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className={`relative text-sm font-normal py-2 px-3 rounded-lg transition-all duration-300 hover:scale-105 group ${
-                        isScrolled
-                          ? "text-white hover:text-blue-400"
-                          : "text-white hover:text-cyan-300"
-                      }`}
-                    >
-                      <span className="relative z-10">{link.label}</span>
-                      {/* Animated underline */}
-                      <div
-                        className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0 group-hover:w-4/5 transition-all duration-300 rounded-full ${
-                          isScrolled ? "bg-blue-400" : "bg-cyan-300"
-                        }`}
-                      ></div>
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right Side - Theme Toggle & CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <ModeToggle />
-            <button
-              className={`relative px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group overflow-hidden ${
-                isScrolled
-                  ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 hover:shadow-blue-500/50"
-                  : "bg-white text-blue-600 hover:bg-white/90 hover:shadow-white/50"
-              }`}
-              onClick={() => {
-                /* Handle modal open */
-              }}
-            >
-              <span className="relative z-10">Get Started</span>
-              {/* Background overlay */}
-              <div
-                className={`absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full ${
-                  isScrolled
-                    ? "bg-gradient-to-r from-blue-500 to-blue-400"
-                    : "bg-gradient-to-r from-blue-50 to-blue-100"
-                }`}
-              ></div>
-              {/* Pulse ring effect */}
-              <div
-                className={`absolute inset-0 rounded-full animate-ping group-hover:animate-pulse opacity-20 ${
-                  isScrolled ? "bg-blue-400" : "bg-blue-300"
-                }`}
-              ></div>
-            </button>
-          </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div
-            className={`xl:hidden pb-4 border-t mt-2 pt-4 transition-all duration-300 ${
-              isScrolled
-                ? "border-white/20 bg-linear-to-br from-gray-900/95 to-black/95 backdrop-blur-xl rounded-b-2xl"
-                : "border-white/30 bg-linear-to-br from-blue-500 to-blue-800/95 backdrop-blur-xl rounded-b-2xl"
-            }`}
-          >
-            <ul className="space-y-1">
+          <div className="lg:hidden border-t border-gray-800 bg-gray-900">
+            <ul className="py-4 space-y-1">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   {link.dropdown ? (
                     <div>
                       <button
-                        className="w-full px-4 py-2.5 text-left text-[15px] text-white hover:bg-white/10 rounded-lg flex items-center justify-between"
+                        className="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-white/10 rounded-lg flex items-center justify-between transition-all duration-200"
                         onClick={() =>
                           setOpenDropdown(
                             openDropdown === link.label ? null : link.label
                           )
                         }
                       >
-                        <span>{link.label}</span>
+                        {link.label}
                         <svg
-                          className={`w-4 h-4 transition-transform ${
+                          className={`w-4 h-4 transition-transform duration-200 ${
                             openDropdown === link.label ? "rotate-180" : ""
                           }`}
                           fill="none"
@@ -263,25 +306,34 @@ export default function Navbar() {
                       </button>
 
                       {openDropdown === link.label && (
-                        <ul className="pl-4 mt-1 space-y-1">
-                          {link.dropdown.map((item) => (
-                            <li key={item.label}>
-                              <Link
-                                href={item.href}
-                                className="block px-4 py-2 text-[15px] text-white/80 hover:bg-white/10 rounded-lg"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                {item.label}
-                              </Link>
-                            </li>
+                        <div className="pl-4 mt-1 space-y-3">
+                          {link.dropdown.map((section) => (
+                            <div key={section.title}>
+                              <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider px-4 py-2">
+                                {section.title}
+                              </h4>
+                              <ul className="space-y-1">
+                                {section.items.map((item) => (
+                                  <li key={item.label}>
+                                    <Link
+                                      href={item.href}
+                                      className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                                      onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       )}
                     </div>
                   ) : (
                     <Link
                       href={link.href}
-                      className="block px-4 py-2.5 text-[15px] text-white hover:bg-white/10 rounded-lg"
+                      className="block px-4 py-2.5 text-sm text-white hover:bg-white/10 rounded-lg transition-all duration-200"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -291,37 +343,11 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* Mobile Actions */}
-            <div className="mt-4 space-y-2 px-4 border-t border-white/20 pt-4">
-              <div className="flex items-center justify-between">
-                <Link
-                  href="/search"
-                  className="flex items-center gap-2 text-[15px] text-white hover:bg-white/10 rounded-lg py-2.5 px-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span>Search</span>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </Link>
-                <ModeToggle />
-              </div>
+            <div className="px-4 py-4 border-t border-gray-800 space-y-3">
+              <ModeToggle />
               <button
-                className="w-full bg-linear-to-r from-white to-gray-100 hover:from-gray-100 hover:to-white text-blue-600 font-semibold px-6 py-3 rounded-lg transition-all text-sm shadow-lg hover:shadow-xl"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  /* Handle modal open */
-                }}
+                className="w-full bg-linear-to-r from-blue-600 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
               </button>

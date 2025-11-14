@@ -86,38 +86,23 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
+    <section className="bg-white dark:bg-black py-16 px-4 relative overflow-hidden min-h-[600px] flex items-center">
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full px-4 py-2 mb-6"
-          >
-            <Icon
-              icon="heroicons:question-mark-circle"
-              className="w-5 h-5 text-blue-600 dark:text-blue-400"
-            />
-            <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
-              FREQUENTLY ASKED QUESTIONS
-            </span>
-          </motion.div>
-
-          <TextReveal
-            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center"
-            delay={0.1}
-            staggerDelay={0.1}
-          >
-            Got Questions? We Have Answers
-          </TextReveal>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-5xl text-black dark:text-white lg:text-left max-w-4xl mb-5"
+          >
+            Got Questions? We've Got Answers.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl text-black dark:text-white lg:text-left max-w-4xl"
           >
             Find quick answers to common questions about our loan services,
             application process, and terms.

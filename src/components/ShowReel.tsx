@@ -86,19 +86,12 @@ export default function ShowReel() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <div className="inline-block bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
-            <span className="text-blue-400 text-sm font-medium">SHOWCASE</span>
-          </div>
-          <TextReveal
-            className="mb-6 text-3xl md:text-4xl lg:text-5xl font-normal text-black dark:text-white text-center"
-            delay={0.1}
-            staggerDelay={0.1}
-          >
-            Our ShowReel
-          </TextReveal>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-5xl text-black dark:text-white max-w-4xl lg:text-left mx-auto mb-5">
+            Our Showreel
+          </p>
+          <p className="text-4xl text-black dark:text-white max-w-4xl lg:text-left mx-auto">
             Discover the innovation behind our digital solutions. Watch how
             we're revolutionizing the financial landscape and creating seamless
             experiences for millions.

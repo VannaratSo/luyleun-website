@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import ShinyText from "./ShinyText";
-import Hyperspeed from "./Hyperspeed";
+
 import TextReveal from "./TextReveal";
+import Balatro from "./Balatro";
 
 interface HeroProps {
   title?: string;
@@ -109,47 +109,8 @@ export default function Hero({
     return colors[color as keyof typeof colors] || colors.blue;
   };
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
-      {/* Hyperspeed background effect - component fills the height/width of its parent container */}
-      <Hyperspeed
-        effectOptions={{
-          onSpeedUp: () => {},
-          onSlowDown: () => {},
-          distortion: "turbulentDistortion",
-          length: 400,
-          roadWidth: 10,
-          islandWidth: 2,
-          lanesPerRoad: 4,
-          fov: 90,
-          fovSpeedUp: 150,
-          speedUp: 2,
-          carLightsFade: 0.4,
-          totalSideLightSticks: 20,
-          lightPairsPerRoadWay: 40,
-          shoulderLinesWidthPercentage: 0.05,
-          brokenLinesWidthPercentage: 0.1,
-          brokenLinesLengthPercentage: 0.5,
-          lightStickWidth: [0.12, 0.5],
-          lightStickHeight: [1.3, 1.7],
-          movingAwaySpeed: [60, 80],
-          movingCloserSpeed: [-120, -160],
-          carLightsLength: [400 * 0.03, 400 * 0.2],
-          carLightsRadius: [0.05, 0.14],
-          carWidthPercentage: [0.3, 0.5],
-          carShiftX: [-0.8, 0.8],
-          carFloorSeparation: [0, 5],
-          colors: {
-            roadColor: 0x080808,
-            islandColor: 0x0a0a0a,
-            background: 0x000000,
-            shoulderLines: 0xffffff,
-            brokenLines: 0xffffff,
-            leftCars: [0xffffff, 0x6750a2, 0x0000ff],
-            rightCars: [0x03b3c3, 0x00ff00, 0x324555],
-            sticks: 0x0000ff,
-          },
-        }}
-      />
+    <section className="relative h-screen min-h-[1000px] w-full overflow-hidden bg-black">
+      <Balatro isRotate={false} mouseInteraction={true} pixelFilter={700} />
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -177,7 +138,7 @@ export default function Hero({
             delay={0.2}
             staggerDelay={0.1}
           >
-            FAST, SECURE DIGITAL LOANS for Modern Cambodia
+            FAST, SECURE DIGITAL LOANS FOR MODERN CAMBODIA.
           </TextReveal>
 
           {/* Subtitle */}

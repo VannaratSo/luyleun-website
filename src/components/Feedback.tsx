@@ -197,18 +197,11 @@ const Feedback: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/40 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-            <Icon icon="solar:heart-bold" className="w-5 h-5 text-blue-400" />
-            <span className="text-black text-sm font-medium">
-              CUSTOMER FEEDBACK
-            </span>
-          </div>
-
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-bla mb-6 text-center">
+          <h2 className="text-4xl md:text-4xl  max-w-4xl lg:text-6xl  mb-6">
             What Our Customers Say
           </h2>
 
-          <p className="text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
+          <p className="text-4xl text-black dark:text-white max-w-4xl lg:text-left mx-auto">
             Real stories from real people who trust LUYLEUN for their financial
             needs. Join thousands of satisfied customers across Cambodia.
           </p>

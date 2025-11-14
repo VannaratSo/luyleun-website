@@ -57,18 +57,10 @@ export default function Partnership({ showTitle = true }: PartnershipProps) {
       {showTitle && (
         <section className="py-12 px-4 bg-white dark:bg-black transition-colors duration-300">
           <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-gray-800 border border-gray-700 rounded-full px-4 py-2 mb-6">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-gray-300 text-sm font-medium">
-                TRUSTED PARTNERS
-              </span>
-            </div>
-
-            <h2 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 dark:text-white text-center">
-              Information of our Partner & Connections
-            </h2>
-
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-5xl text-black dark:text-white max-w-3xl mx-auto lg:text-left mb-8">
+              Our Corporate & Connection
+            </p>
+            <p className="text-4xl text-black dark:text-white max-w-3xl mx-auto lg:text-left mb-8">
               Partnered with Cambodia's leading financial institutions to
               provide secure and reliable banking services.
             </p>
